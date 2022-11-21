@@ -28,17 +28,21 @@ dataImportServer <- function(id = "data_import") {
                 read.csv(file, header = input$header)
               },
               ".xls" = {
-                read_excel(
-                  file,
-                  sheet = 1,
-                  col_names = input$header
+                data.frame(
+                    read_excel(
+                      file,
+                      sheet = 1,
+                      col_names = input$header
+                    )
                 )
               },
               ".xlsx" = {
-                read_excel(
-                  file,
-                  sheet = 1,
-                  col_names = input$header
+                data.frame(
+                    read_excel(
+                      file,
+                      sheet = 1,
+                      col_names = input$header
+                    )
                 )
               },
               ".ods" = {
