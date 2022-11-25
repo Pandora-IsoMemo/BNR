@@ -99,13 +99,25 @@ parameterLearningServer <-
               cs <- list()
               if (input$constraints_flag) {
                 # Set RESPONSE scope for eval resolution
-                assign("RESPONSE", predictors %*% coefs, envir = .GlobalEnv)
-                # Get the costraints
+                assign("RESPONSE", predictors %*% coefs, envir = environment())
+                # Get the constraints
                 cs <- constraints()
+                # Filter only local constraints
+                cs <- Filter(function(x) grepl(node, x), cs)
+                # Replace local variable with REPONSE placeholder
+                cs <- lapply(cs, function(x) gsub(node, "RESPONSE", x))
+                # Replace non-local variables with data.
+                cs <- lapply(cs, function(x) {
+                    for (var in nodes(model())) {
+                        x <- gsub(var, paste0("data[ , \"", var,"\"]"), x)
+                    }
+                    
+                    x
+                })
                 # Parse the constraints
                 cs <- lapply(cs, str2lang)
                 # Evaluate the constraints
-                cs <- lapply(cs, eval)
+                cs <- lapply(cs, function(x) eval(x, envir = environment()))
               }
               # Define the constrained optimization problem...
               problem <- Problem(objective, constraints = cs)
