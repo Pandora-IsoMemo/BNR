@@ -3,8 +3,7 @@ FROM r-base:4.2.0
 
 # Setup environment
 ENV R_SHINY_PORT=8080
-WORKDIR /app
-COPY . .
+WORKDIR /workspace
 
 # Install system dependencies
 RUN apt-get update && \
@@ -16,7 +15,13 @@ RUN apt-get update && \
     libxml2-dev
 
 # Install R dependencies
+COPY .Rprofile .
+COPY renv.lock .
+COPY renv/activate.R ./renv/activate.R
 RUN R -e 'renv::restore()'
+
+# Copy R sourcers
+COPY . .
 
 # Set entrypoint
 ENTRYPOINT ["Rscript", "app.R"]
