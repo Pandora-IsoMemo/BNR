@@ -176,6 +176,8 @@ parameterLearningServer <-
 
         ## Get valid ops
         ops <- unlist(lapply(c("Arith", "Compare", "Math"), getGroupMembers))
+        ## Add brackets for nested ops
+        ops <- c(ops, c("(", ")", "[", "]", "{", "}"))
 
         ## Build Abstract Syntax Tree (AST)
         ast <- function(expr) {
