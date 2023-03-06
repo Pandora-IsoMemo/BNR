@@ -63,8 +63,7 @@ queryEstimationUI <- function(id = "query_estimation") {
               content = "query_estimation-query_evidence"
             ),
           selectInput(ns("query_method"), "Estimation method:", list(
-            "Logic Sampling" = "ls" # ,
-            # "Likelihood Weighting" = "lw" # FIXME:
+            "Logic Sampling" = "ls"
           )) %>%
             helper(
               type = "markdown",

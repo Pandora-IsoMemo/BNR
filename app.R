@@ -38,11 +38,6 @@ sidebar <- dashboardSidebar(sidebarMenu(
     "Query Estimation",
     tabName = "query_estimation",
     icon = icon("cogs")
-  ),
-  menuItem(
-    "Result Analysis",
-    tabName = "result_analysis",
-    icon = icon("search")
   )
 ))
 

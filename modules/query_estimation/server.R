@@ -84,7 +84,7 @@ queryEstimationServer <- function(id = "query_estimation", model) {
         if (isTruthy(input$query_evidence)) {
           tryCatch(
             {
-              str2expression(input$query_evidence)
+              str2expression(gsub("[\r\n]", " ", input$query_evidence))
               valid_query_evidence <- TRUE
               showFeedbackSuccess("query_evidence")
             },
