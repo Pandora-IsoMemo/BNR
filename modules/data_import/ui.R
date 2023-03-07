@@ -31,10 +31,15 @@ dataImportUI <- function(id = "data_import") {
             type = "markdown",
             content = "data_import-format"
           ),
-        checkboxInput(ns("header"), "First line contains header.", TRUE) %>%
+        checkboxInput(ns("header"), "First row contains header.", TRUE) %>%
           helper(
             type = "markdown",
             content = "data_import-header"
+          ),
+        checkboxInput(ns("index"), "First column contains index.", FALSE) %>%
+          helper(
+            type = "markdown",
+            content = "data_import-index"
           ),
         fileInput(
           ns("file"),

@@ -53,6 +53,9 @@ dataImportServer <- function(id = "data_import") {
                 )
               }
             )
+            if (input$index) {
+              df[1] <- NULL
+            }
             showFeedbackSuccess("format")
             showFeedbackSuccess("file")
             return(df)
