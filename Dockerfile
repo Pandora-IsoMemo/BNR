@@ -2,7 +2,7 @@
 FROM r-base:4.2.0
 
 # Setup environment
-ENV R_SHINY_PORT=8080
+ENV R_SHINY_PORT=3838
 WORKDIR /workspace
 
 # Install system dependencies
