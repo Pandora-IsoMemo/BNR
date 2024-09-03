@@ -1,5 +1,5 @@
 # Select R version
-FROM r-base:4.2.0
+FROM inwt/r-shiny:4.2.1
 
 # Setup environment
 ENV R_SHINY_PORT=3838
@@ -7,7 +7,6 @@ WORKDIR /workspace
 
 # Install system dependencies
 RUN apt-get update && \
-    apt-get install -y usrmerge && \
     apt-get install -y \
     libcurl4-openssl-dev \
     libgmp-dev \
