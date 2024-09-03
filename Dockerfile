@@ -7,6 +7,7 @@ WORKDIR /workspace
 
 # Install system dependencies
 RUN apt-get update && \
+    apt-get install -y usrmerge && \
     apt-get install -y \
     libcurl4-openssl-dev \
     libgmp-dev \
