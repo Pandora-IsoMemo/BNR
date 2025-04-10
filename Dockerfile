@@ -1,5 +1,5 @@
 # Select R version
-FROM inwt/r-shiny:4.4.1
+FROM inwt/r-shiny:4.4.3
 
 # Setup environment
 ENV R_SHINY_PORT=3838
